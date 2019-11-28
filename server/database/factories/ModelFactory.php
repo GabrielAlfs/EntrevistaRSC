@@ -21,3 +21,11 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
         'isSeller' => 0,
     ];
 });
+
+$factory->define(App\Product::class, function (Faker\Generator $faker) {
+    return [
+        'name' => $faker->word,
+        'price' => rand(0,50000) / 100,
+        'user_id' => rand(0,9),
+    ];
+});

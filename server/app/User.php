@@ -18,16 +18,14 @@ class User extends Model implements AuthenticatableContract, AuthorizableContrac
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'isSeller'
+        'name', 'email', 'password', 'isSeller'
     ];
 
-    /**
-     * The attributes excluded from the model's JSON form.
-     *
-     * @var array
-     */
-    protected $hidden = [
-        'password',
+    public static $rules = [
+        'name' => 'required',
+        'email' => 'required|unique|email',
+        'password' => 'required',
+        'isSeller' => 'required'
     ];
 
     public function products(){

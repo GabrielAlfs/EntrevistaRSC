@@ -2,7 +2,6 @@
 
 namespace App\Http\Controllers;
 
-use App\Http\Resources\ProdutoCollection;
 use App\Product;
 use App\User;
 use Illuminate\Http\Request;

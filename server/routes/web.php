@@ -15,15 +15,16 @@ $router->get('/', function () use ($router) {
     return $router->app->version();
 });
 
+$router->post('/register', 'UserController@store');
+
 $router->group(['prefix' => 'auth'], function () use ($router) {
     $router->post('/login', 'AuthController@authenticate');
 });
 
-
 $router->group(['middleware' => 'jwt.auth'], function() use ($router) {
     $router->get('/users', function() {
-        $users = \App\User::all();
-        return response()->json($users);
+        $router->get('/', 'UserController@index');
+        $router->get('/{id}', 'UserController@show');
     });
     $router->group(['prefix' => 'product'], function () use ($router) {
         $router->get('/', 'ProductController@index');
