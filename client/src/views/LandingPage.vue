@@ -38,7 +38,7 @@
             <v-text-field
               label="Nome"
               prepend-icon="mdi-pencil"
-              v-model="user.email"
+              v-model="user.name"
             />
             <v-text-field
               label="E-mail"
@@ -65,6 +65,7 @@
               prepend-icon="mdi-tennis"
               :items="['Comprador', 'Vendedor']"
               label="Tipo de conta"
+              v-model="user.accountType"
             ></v-select>
           </v-form>
         </v-card-text>
@@ -103,6 +104,9 @@ export default {
     },
   },
   methods: {
+    setUser(user) {
+      return this.$store.commit('setUser', user);
+    },
     login() {
       this.buttonLogin = 'Carregando ...';
       const body = {
@@ -138,8 +142,9 @@ export default {
           password: this.user.password,
           isSeller: this.user.isSeller,
         };
-        axios.post(`${this.getApiUrl}/users`, body).then(() => {
+        axios.post(`${this.getApiUrl}/register`, body).then(() => {
           alert('Conta cadastrada com sucesso, você já pode fazer o login!');
+          this.toggleLogin = true;
         }).catch(() => {
           alert('Esse e-mail já está cadastrado, tente fazer o login!');
         });

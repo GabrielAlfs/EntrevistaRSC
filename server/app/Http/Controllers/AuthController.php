@@ -22,6 +22,9 @@ class AuthController extends BaseController
     protected function generateJWT(User $user) {
         $payload = [
             'sub' => $user->id,
+            'name' => $user->name,
+            'email' => $user->email,
+            'isSeller' => $user->isSeller,
             'iat' => time(),
             'exp' => time() + 60*60
         ];

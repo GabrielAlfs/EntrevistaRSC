@@ -31,4 +31,9 @@ class UserController extends Controller
         $user = User::find($id);
         return response()->json($user);
     }
+
+    public function active(Request $request) {
+        return response()->json($request->auth);
+    }
+
 }

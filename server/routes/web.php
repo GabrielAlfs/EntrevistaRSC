@@ -22,11 +22,12 @@ $router->group(['prefix' => 'auth'], function () use ($router) {
 });
 
 $router->group(['middleware' => 'jwt.auth'], function() use ($router) {
-    $router->get('/users', function() {
+    $router->group(['prefix' => 'users'], function () use ($router) {
         $router->get('/', 'UserController@index');
+        $router->get('/active', 'UserController@active');
         $router->get('/{id}', 'UserController@show');
     });
-    $router->group(['prefix' => 'product'], function () use ($router) {
+    $router->group(['prefix' => 'products'], function () use ($router) {
         $router->get('/', 'ProductController@index');
         $router->get('/{id}', 'ProductController@show');
         $router->post('/', 'ProductController@store');

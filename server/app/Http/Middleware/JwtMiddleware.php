@@ -32,9 +32,9 @@ class JwtMiddleware
             ], 400);
         }
 
-        $user = User::find($credentials->sub);
+        // $user = User::find($credentials->sub);
 
-        $request->auth = $user;
+        $request->auth = $credentials;
 
         return $next($request);
     }
