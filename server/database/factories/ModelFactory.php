@@ -17,6 +17,7 @@ $factory->define(App\User::class, function (Faker\Generator $faker) {
     return [
         'name' => $faker->name,
         'email' => $faker->unique()->email,
-        'password' => Hash::make('senha123')
+        'password' => Hash::make('senha123'),
+        'isSeller' => 0,
     ];
 });

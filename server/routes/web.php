@@ -25,4 +25,11 @@ $router->group(['middleware' => 'jwt.auth'], function() use ($router) {
         $users = \App\User::all();
         return response()->json($users);
     });
+    $router->group(['prefix' => 'product'], function () use ($router) {
+        $router->get('/', 'ProductController@index');
+        $router->get('/{id}', 'ProductController@show');
+        $router->post('/', 'ProductController@store');
+        $router->put('/{id}', 'ProductController@update');
+        $router->delete('/{id}', 'ProductController@delete');
+    });
 });
