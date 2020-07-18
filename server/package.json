@@ -1,0 +1,15 @@
+{
+  "name": "interview-rsc-server",
+  "version": "1.0.0",
+  "main": "index.js",
+  "scripts": {
+    "start": "node dist/main.js",
+    "build": "tsc"
+  },
+  "repository": "git@github.com:GabrielAlfs/EntrevistaRSC.git",
+  "author": "Gabriel Alves <l.luis.gabriel@outlook.com>",
+  "license": "MIT",
+  "devDependencies": {
+    "typescript": "^3.9.7"
+  }
+}
